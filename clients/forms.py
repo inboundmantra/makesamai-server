@@ -14,7 +14,7 @@ class ClientRegistrationForm(UserCreationForm):
 
     class Meta:
         model = models.Client
-        fields = ("username", "email", "first_name", "last_name",)
+        fields = ("email", "first_name", "last_name",)
 
 
 class ClientUpdateForm(UserChangeForm):
@@ -28,4 +28,4 @@ class ClientUpdateForm(UserChangeForm):
 
     class Meta:
         model = models.Client
-        fields = ("username", "email", "first_name", "last_name",)
+        fields = ("email", "first_name", "last_name",)

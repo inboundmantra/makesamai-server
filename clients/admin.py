@@ -16,7 +16,7 @@ class ClientAdmin(UserAdmin):
     form = forms.ClientUpdateForm
     add_form = forms.ClientRegistrationForm
 
-    fieldsets = ((_('User'), {'fields': ('username', 'email', 'password')}),
+    fieldsets = ((_('User'), {'fields': ('email', 'password')}),
                  (_('Personal Info'), {'fields': ('first_name', 'last_name')}),
                  (_('Permissions'),
                   {'fields': ('is_active', 'is_staff', 'is_superuser', 'groups', 'user_permissions')}),
@@ -25,12 +25,12 @@ class ClientAdmin(UserAdmin):
     add_fieldsets = (
         (None, {
             'classes': ('wide',),
-            'fields': ('username', 'first_name', 'last_name', 'email', 'password1', 'password2')
+            'fields': ('first_name', 'last_name', 'email', 'password1', 'password2')
         }),
     )
-    list_display = ('username', 'email', 'first_name', 'last_name', 'is_staff')
-    search_fields = ('username', 'email', 'first_name', 'last_name')
-    ordering = ('username',)
+    list_display = ('email', 'first_name', 'last_name', 'is_staff')
+    search_fields = ('email', 'first_name', 'last_name')
+    ordering = ('email',)
 
 
 admin.site.register(models.Client, ClientAdmin)

@@ -23,6 +23,8 @@ from rest_framework.urlpatterns import format_suffix_patterns
 
 urlpatterns = [
                   path('admin/', admin.site.urls),
+                  path('', include('clients.urls', namespace='clients')),
+                  path('', include('accounts.urls', namespace='accounts')),
                   url(r'^api-auth/', include('rest_framework.urls',
                                              namespace='rest_framework')),
                   url(r'^o/', include('oauth2_provider.urls', namespace='oauth2_provider')),
