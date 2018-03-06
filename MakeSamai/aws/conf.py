@@ -10,8 +10,8 @@ AWS_PRELOAD_METADATA = True
 AWS_QUERYSTRING_AUTH = True
 S3_USE_SIGV4 = True
 
-DEFAULT_FILE_STORAGE = 'Samai.aws.utils.MediaRootS3BotoStorage'
-STATICFILES_STORAGE = 'Samai.aws.utils.StaticRootS3BotoStorage'
+DEFAULT_FILE_STORAGE = 'MakeSamai.aws.utils.MediaRootS3BotoStorage'
+STATICFILES_STORAGE = 'MakeSamai.aws.utils.StaticRootS3BotoStorage'
 S3_URL = '//%s.s3.amazonaws.com/' % AWS_STORAGE_BUCKET_NAME
 MEDIA_URL = '//%s.s3.amazonaws.com/media/' % AWS_STORAGE_BUCKET_NAME
 MEDIA_ROOT = MEDIA_URL

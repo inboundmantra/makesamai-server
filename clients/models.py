@@ -37,6 +37,7 @@ class Client(AbstractBaseUser, PermissionsMixin):
     def get_absolute_url(self):
         return "/api/client/%d/" % urlquote(self.id)
 
+    @property
     def get_full_name(self):
         """
         Full Name.
@@ -45,6 +46,7 @@ class Client(AbstractBaseUser, PermissionsMixin):
         full_name = "%s %s" % (self.first_name, self.last_name)
         return full_name.strip()
 
+    @property
     def get_short_name(self):
         """
         Short Name.

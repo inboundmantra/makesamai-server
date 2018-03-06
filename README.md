@@ -18,5 +18,11 @@ REST API backend for MakeSamai.
 - :white_large_square: List
 - :white_large_square: Email
 
+## Endpoints
+### Clients
+- Create
+### Accounts
+- User Accounts
+
 ## Credits
 Created by [Vaibhav Sharma](https://github.com/v4iv/) for [Inbound Mantra](https://www.inboundmantra.com/).

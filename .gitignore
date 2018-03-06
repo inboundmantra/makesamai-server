@@ -4,3 +4,5 @@ staticfiles
 .env
 .idea/
 .vscode/
+MakeSamai/__pycache__/
+MakeSamai/aws/__pycache__/
