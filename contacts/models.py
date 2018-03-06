@@ -28,7 +28,7 @@ class Contact(models.Model):
     Contact Model.
     """
     uuid = RandomSlugField(length=10, unique=True, primary_key=True)
-    account = models.ForeignKey(Account, on_delete=models.CASCADE)
+    account = models.ForeignKey(Account, on_delete=models.CASCADE, to_field='uid')
     source = models.CharField(max_length=255, blank=True, null=True)
     title = models.CharField(_('Title'), max_length=3, choices=TITLE, blank=True, null=True)
     first_name = models.CharField(_("First name"), max_length=255, default=" ", blank=True)
