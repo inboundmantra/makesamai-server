@@ -21,8 +21,7 @@ class ContactSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.Contact
         fields = (
-            'id',
-            'uuid',
+            'ucid',
             'source',
             'title',
             'first_name',

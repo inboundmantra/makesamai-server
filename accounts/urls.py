@@ -4,5 +4,6 @@ from . import views
 
 app_name = 'accounts'
 urlpatterns = [
-    path('api/accounts/u/<slug:user>/', views.UserAccountList.as_view(), name='user_accounts'),
+    path('api/account/u/<slug:user>/', views.UserAccountList.as_view(), name='list'),
+    path('api/account/<slug:uaid>/', views.AccountRetrieve.as_view(), name='retrieve'),
 ]

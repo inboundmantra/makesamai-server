@@ -13,4 +13,4 @@ class AccountSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = models.Account
-        fields = ('id', 'uid', 'owner', 'name', 'slug', 'created_on')
+        fields = ('uaid', 'owner', 'name', 'slug', 'created_on')

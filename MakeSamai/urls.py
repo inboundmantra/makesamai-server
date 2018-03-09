@@ -13,7 +13,7 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-
+import django.contrib.auth.views
 from django.conf import settings
 from django.conf.urls import url
 from django.conf.urls.static import static
@@ -25,6 +25,8 @@ urlpatterns = [
                   path('admin/', admin.site.urls),
                   path('', include('clients.urls', namespace='clients')),
                   path('', include('accounts.urls', namespace='accounts')),
+                  url(r'^accounts/login/$', django.contrib.auth.views.login, {'template_name': 'admin/login.html'},
+                      name="login"),
                   url(r'^api-auth/', include('rest_framework.urls',
                                              namespace='rest_framework')),
                   url(r'^o/', include('oauth2_provider.urls', namespace='oauth2_provider')),

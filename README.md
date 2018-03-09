@@ -21,12 +21,18 @@ REST API backend for MakeSamai.
 ## Endpoints
 ### Clients
 - Create
+
 ### Accounts
-- User Accounts
+- User Accounts List
+- Account Create
+- Account Retrieve/Update/Destroy
 
 ### Contacts
-- Address
+- Address Create
+- Address List
+- Contact Create
 - Contact List
+- Contact Retrieve/Update/Destroy
 
 ## Credits
 Created by [Vaibhav Sharma](https://github.com/v4iv/) for [Inbound Mantra](https://www.inboundmantra.com/).
