@@ -21,6 +21,7 @@ REST API backend for MakeSamai.
 ## Endpoints
 ### Clients
 - Create
+- Authenticate
 
 ### Accounts
 - User Accounts List

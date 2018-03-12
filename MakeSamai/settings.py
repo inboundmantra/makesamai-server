@@ -21,10 +21,13 @@ PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "--)yqrm8+8xy#3rd$6rkovpd+9ytpp(*7o$uye81vq=nrz7=9%"
+SECRET_KEY = os.environ['SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+
+# Administrators of Make Samai
+ADMINS = [('Vaibhav', 'vaibhav@inboundmantra.com'), ('Jaskaran', 'jaskaran@inboundmantra.com')]
 
 # Application definition
 
@@ -120,6 +123,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 AUTHENTICATION_BACKENDS = (
     'oauth2_provider.backends.OAuth2Backend',
+    'django.contrib.auth.backends.ModelBackend',
 )
 
 CORS_ORIGIN_ALLOW_ALL = True
@@ -151,6 +155,12 @@ OAUTH2_PROVIDER = {
     # this is the list of available scopes
     'SCOPES': {'read': 'Read scope', 'write': 'Write scope'}
 }
+
+# Email Backend
+EMAIL_HOST = os.environ['EMAIL_HOST']
+EMAIL_HOST_USER = os.environ['EMAIL_HOST_USER']
+EMAIL_HOST_PASSWORD = os.environ['EMAIL_HOST_PASSWORD']
+EMAIL_PORT = os.environ['EMAIL_PORT']
 
 # Internationalization
 # https://docs.djangoproject.com/en/2.0/topics/i18n/
