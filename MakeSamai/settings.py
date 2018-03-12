@@ -46,8 +46,8 @@ INSTALLED_APPS = [
     'clients.apps.ClientsConfig',
     'accounts.apps.AccountsConfig',
     'contacts.apps.ContactsConfig',
-    'rest_framework',
     'oauth2_provider',
+    'rest_framework',
     'storages',
     'randomslugfield',
 ]
