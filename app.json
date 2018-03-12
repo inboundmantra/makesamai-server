@@ -6,7 +6,8 @@
       },
       "addons": [
         "heroku-postgresql:hobby-dev"
-      ]
+      ],
+      "test-setup": "python manage.py migrate"
     }
   }
 }
