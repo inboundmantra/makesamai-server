@@ -6,10 +6,7 @@
       },
       "addons": [
         "heroku-postgresql:hobby-dev"
-      ],
-      "scripts": {
-        "test": "python manage.py test"
-      }
+      ]
     }
   }
 }
