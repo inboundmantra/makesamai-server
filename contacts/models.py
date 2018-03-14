@@ -29,6 +29,8 @@ class Contact(models.Model):
     """
     ucid = RandomSlugField(length=10, unique=True, primary_key=True)
     account = models.ForeignKey(Account, on_delete=models.CASCADE, to_field='uaid')
+    created_by = models.ForeignKey(settings.AUTH_USER_MODEL, to_field='uuid', related_name='created_by',
+                                   on_delete=models.CASCADE, blank=True, null=True)
     source = models.CharField(max_length=255, blank=True, null=True)
     title = models.CharField(_('Title'), max_length=3, choices=TITLE, blank=True, null=True)
     first_name = models.CharField(_("First name"), max_length=255, default=" ", blank=True)
@@ -44,8 +46,6 @@ class Contact(models.Model):
     stage = models.CharField(_('Stage'), max_length=50, choices=STAGES, default='lead', blank=True,
                              null=True)
     description = models.TextField(blank=True, null=True)
-    created_by = models.ForeignKey(settings.AUTH_USER_MODEL, to_field='uuid', related_name='created_by',
-                                   on_delete=models.CASCADE, blank=True, null=True)
     created_on = models.DateTimeField(_("Created on"), auto_now_add=True)
     is_active = models.BooleanField(default=True)
 

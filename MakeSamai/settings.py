@@ -11,7 +11,6 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 
 import os
 import dj_database_url
-import django_heroku
 from .aws.conf import *
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -46,6 +45,7 @@ INSTALLED_APPS = [
     'clients.apps.ClientsConfig',
     'accounts.apps.AccountsConfig',
     'contacts.apps.ContactsConfig',
+    'forms.apps.FormsConfig',
     'oauth2_provider',
     'rest_framework',
     'storages',
@@ -180,5 +180,3 @@ SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 # Allow all host headers
 ALLOWED_HOSTS = ['*']
-
-django_heroku.settings(locals())

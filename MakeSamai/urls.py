@@ -25,6 +25,8 @@ urlpatterns = [
                   path('admin/', admin.site.urls),
                   path('', include('clients.urls', namespace='clients')),
                   path('', include('accounts.urls', namespace='accounts')),
+                  path('', include('contacts.urls', namespace='contacts')),
+                  path('', include('forms.urls', namespace='forms')),
                   url(r'^accounts/login/$', django.contrib.auth.views.login, {'template_name': 'admin/login.html'},
                       name="login"),
                   url(r'^api-auth/', include('rest_framework.urls',
