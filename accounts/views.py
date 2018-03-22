@@ -4,6 +4,7 @@ from . import models, serializers
 
 
 class AccountCreate(generics.CreateAPIView):
+    queryset = models.Account.objects.all()
     serializer_class = serializers.AccountSerializer
 
 

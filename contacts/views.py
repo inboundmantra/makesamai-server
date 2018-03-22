@@ -17,11 +17,13 @@ class ContactList(generics.ListAPIView):
 
 
 class ContactCreate(generics.CreateAPIView):
+    queryset = models.Contact.objects.all()
     serializer_class = serializers.ContactSerializer
     permission_classes = (AllowAny,)
 
 
 class AddressCreate(generics.CreateAPIView):
+    queryset = models.Address.objects.all()
     serializer_class = serializers.AddressSerializer
     permission_classes = (AllowAny,)
 
