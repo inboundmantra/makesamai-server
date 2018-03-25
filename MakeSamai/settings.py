@@ -46,6 +46,8 @@ INSTALLED_APPS = [
     'accounts.apps.AccountsConfig',
     'contacts.apps.ContactsConfig',
     'forms.apps.FormsConfig',
+    'landing_pages.apps.LandingPagesConfig',
+    'emails.apps.EmailsConfig',
     'rest_framework',
     'oauth2_provider',
     'storages',

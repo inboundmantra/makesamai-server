@@ -18,7 +18,17 @@ REST API backend for MakeSamai.
 - :white_large_square: List
 - :white_large_square: Email
 
+## Production Check
+
+- Debug False
+- Production Database
+- Production SendGrid API
+- Paid Dyno
+- Metrics Enabled
+
 ## API Endpoints
+Suffix ```?format=json``` on get apis to get JSON format data.
+
 ### Clients
 #### Create
 
@@ -39,19 +49,13 @@ Method Allowed - *POST*
 ### Accounts
 #### Create
 
-```/api/account/create/```
+#### User Accounts List Create
+
+```/api/account/```
 
 Authentication Required - *True*
 
-Method Allowed - *POST*
-
-#### User Accounts List
-
-```/api/account/u/<user_id>/```
-
-Authentication Required - *True*
-
-Method Allowed - *GET*
+Method Allowed - *GET, POST*
 
 #### Account Retrieve/Update/Destroy
 
@@ -78,6 +82,14 @@ Authentication Required - *False*
 
 Method Allowed - *GET, PUT, PATCH, DELETE*
 
+#### Contact List
+
+```/api/contact/list/account/<account_id>/```
+
+Authentication Required - *True*
+
+Method Allowed - *GET*
+
 #### Contact Create
 
 
@@ -87,21 +99,17 @@ Authentication Required - *False*
 
 Method Allowed - *POST*
 
-#### Contact List
-
-```/api/contact/list/account/<account_id>/```
-
-Authentication Required - *True*
-
-Method Allowed - *GET*
-
 #### Contact Retrieve/Update/Destroy
 
-```/api/contact/<contact_id>/```
+```api/contact/retrieve/<contact_id>/account/<account_id>/```
 
 Authentication Required - *False*
 
 Method Allowed - *GET, PUT, PATCH, DELETE*
+
+### Forms
+### Landing Pages
+### Emails
 
 ## Credits
 Created by [Vaibhav Sharma](https://github.com/v4iv/) for [Inbound Mantra](https://www.inboundmantra.com/).

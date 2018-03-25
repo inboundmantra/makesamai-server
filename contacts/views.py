@@ -30,17 +30,18 @@ class AddressCreate(generics.CreateAPIView):
 
 class ContactRetrieve(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = serializers.ContactSerializer
+    lookup_field = 'ucid'
 
     def get_queryset(self):
         """
-                This view should return a list of all the contact for
-                the user as determined by the account portion of the URL.
-                """
+        This view should return a list of all the contact for
+        the user as determined by the account portion of the URL.
+        """
         uaid = self.kwargs['account']
         return models.Contact.objects.filter(account=uaid)
 
 
-class AddressRetrieve(generics.RetrieveUpdateAPIView):
+class AddressRetrieve(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = serializers.AddressSerializer
 
     def get_queryset(self):

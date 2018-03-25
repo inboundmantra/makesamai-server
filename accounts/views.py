@@ -3,11 +3,6 @@ from rest_framework import generics
 from . import models, serializers
 
 
-class AccountCreate(generics.CreateAPIView):
-    queryset = models.Account.objects.all()
-    serializer_class = serializers.AccountSerializer
-
-
 class AccountRetrieve(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = serializers.AccountSerializer
 
@@ -20,7 +15,7 @@ class AccountRetrieve(generics.RetrieveUpdateDestroyAPIView):
         return models.Account.objects.get(uaid=uaid)
 
 
-class UserAccountList(generics.ListAPIView):
+class UserAccountList(generics.ListCreateAPIView):
     serializer_class = serializers.AccountSerializer
     user = None
 
