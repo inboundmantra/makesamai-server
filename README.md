@@ -18,7 +18,7 @@ REST API backend for MakeSamai.
 - :white_large_square: List
 - :white_large_square: Email
 
-## Production Check List
+## Deployment CheckList
 
 - :white_large_square: Debug False
 - :white_large_square: Production Database

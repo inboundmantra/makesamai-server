@@ -10,6 +10,8 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 """
 
 import os
+import re
+
 import dj_database_url
 from .aws.conf import *
 
@@ -26,8 +28,9 @@ SECRET_KEY = os.environ['SECRET_KEY']
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-# Administrators of Make Samai
+# Administrators and Managers of Make Samai
 ADMINS = [('Vaibhav', 'vaibhav@inboundmantra.com'), ('Jaskaran', 'jaskaran@inboundmantra.com')]
+MANAGERS = [('Vaibhav', 'vaibhav@inboundmantra.com'), ('Jaskaran', 'jaskaran@inboundmantra.com')]
 
 # Application definition
 
@@ -182,3 +185,9 @@ SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 # Allow all host headers
 ALLOWED_HOSTS = ['*']
+
+IGNORABLE_404_URLS = [
+    re.compile(r'^/apple-touch-icon.*\.png$'),
+    re.compile(r'^/favicon\.ico$'),
+    re.compile(r'^/robots\.txt$'),
+]

@@ -22,7 +22,7 @@ from django.urls import path, include
 from rest_framework.urlpatterns import format_suffix_patterns
 
 urlpatterns = [
-                  path('admin/', admin.site.urls),
+                  path('/', admin.site.urls),
                   path('', include('clients.urls', namespace='clients')),
                   path('', include('accounts.urls', namespace='accounts')),
                   path('', include('contacts.urls', namespace='contacts')),
