@@ -23,7 +23,7 @@ class CreateClient(APIView):
                 'notification-noreply@makesamai.com',
                 [user.email],
                 fail_silently=True,
-                html_message="Hi " + user.first_name + ",<br> We are glad to have you onboard <strong>MakeSamai</strong>. Get Started With Superpowered Marketing Today.<br><br>Regards,<br>Team MakeSamai",
+                html_message="Hi " + user.first_name + ",<br> Welcome to <strong>MakeSamai</strong>! We're so excited that you made some samai to sign up with us. <br>See what we did there? ;). <br>Get Started With Superpowered Marketing <a href='http://www.makesamai.com/help'>here</a>. <br>We look forward to working with you to superpower your marketing efforts. Feel free to reach out to us at <a href='mailto:support@makesamai.com'>support@makesamai.com</a><br><br>Love,<br>Team MakeSamai",
             )
             if user:
                 return Response(serializer.data, status=status.HTTP_201_CREATED)
