@@ -17,15 +17,15 @@ class CreateClient(APIView):
         serializer = serializers.ClientSerializer(data=request.data)
         if serializer.is_valid():
             user = serializer.save()
+            send_mail(
+                "Welcome To Make Samai!",
+                "Hi " + user.first_name + ",\n We are glad to have you onboard Make Samai. Get Started With Superpowered Marketing Today.",
+                'notification-noreply@makesamai.com',
+                [user.email],
+                fail_silently=True,
+                html_message="Hi " + user.first_name + ",<br> We are glad to have you onboard <strong>MakeSamai</strong>. Get Started With Superpowered Marketing Today.<br><br>Regards,<br>Team MakeSamai",
+            )
             if user:
-                send_mail(
-                    "Welcome To Make Samai!",
-                    "Hi " + user.first_name + ",\n We are glad to have you onboard Make Samai. Get Started With Superpowered Marketing Today.",
-                    'notification-noreply@makesamai.com',
-                    [user.email],
-                    fail_silently=True,
-                    html_message="Hi " + user.first_name + ",<br> We are glad to have you onboard <strong>MakeSamai</strong>. Get Started With Superpowered Marketing Today.<br><br>Regards,<br>Team MakeSamai",
-                )
                 return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
