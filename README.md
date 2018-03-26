@@ -12,19 +12,37 @@ REST API backend for MakeSamai.
 - :heavy_check_mark: User and Authentication
 - :heavy_check_mark: Accounts
 - :heavy_check_mark: Contact
-- :white_large_square: Forms
-- :white_large_square: Landing Pages
+- :heavy_check_mark: Forms
+- :heavy_check_mark: Landing Pages
 - :white_large_square: Tracking
 - :white_large_square: List
 - :white_large_square: Email
 
-## Production Check
+## Production Check List
 
-- Debug False
-- Production Database
-- Production SendGrid API
-- Paid Dyno
-- Metrics Enabled
+- :white_large_square: Debug False
+- :white_large_square: Production Database
+- :white_large_square: Production SendGrid API
+- :white_large_square: Production Dyno
+- :white_large_square: Metrics Enabled
+
+## Important Commands
+
+To create migrations
+
+```python manage.py makemigrations```
+
+To run migrations on the database
+
+```python manage.py migrate```
+
+To create a superuser
+
+```python manage.py createsuperuser```
+
+## Root URL
+
+http://api.makesamai.com
 
 ## API Endpoints
 Suffix ```?format=json``` on get apis to get JSON format data.
@@ -108,7 +126,57 @@ Authentication Required - *False*
 Method Allowed - *GET, PUT, PATCH, DELETE*
 
 ### Forms
+#### List/Create
+
+```/api/form/list/account/<account_id>/```
+
+Authentication Required - *True*
+
+Method Allowed - *GET, POST*
+
+#### Retrieve/Update/Destroy
+
+```/api/form/retrieve/<form_id>/account/<account_id>/```
+
+Authentication Required - *True*
+
+Method Allowed - *GET, PUT, PATCH, DELETE*
+
+
+#### Render
+
+```/api/form/render/<form_id>/account/<account_id>/```
+
+Authentication Required - *False*
+
+Method Allowed - *GET*
+
 ### Landing Pages
+#### List/Create
+
+```/api/landing_page/list/account/<account_id>/```
+
+Authentication Required - *True*
+
+Method Allowed - *GET, POST*
+
+#### Retrieve/Update/Destroy
+
+```/api/landing_page/retrieve/<landing_page_id>/account/<account_id>/```
+
+Authentication Required - *True*
+
+Method Allowed - *GET, PUT, PATCH, DELETE*
+
+
+#### Render
+
+```/api/landing_page/render/<landing_page_id>/account/<account_id>/```
+
+Authentication Required - *False*
+
+Method Allowed - *GET*
+
 ### Emails
 
 ## Credits
