@@ -26,7 +26,7 @@ PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 SECRET_KEY = os.environ['SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ['DEBUG']
 
 # Administrators and Managers of Make Samai
 ADMINS = [('Vaibhav', 'vaibhav@inboundmantra.com'), ('Jaskaran', 'jaskaran@inboundmantra.com')]

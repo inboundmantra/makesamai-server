@@ -5,6 +5,8 @@ from randomslugfield import RandomSlugField
 
 from MakeSamai.utils import TITLE, COUNTRIES, LIFECYCLE_STATUS, STAGES
 from accounts.models import Account
+from forms.models import Form
+from landing_pages.models import LandingPage
 
 
 class Address(models.Model):
@@ -29,6 +31,8 @@ class Contact(models.Model):
     """
     ucid = RandomSlugField(length=10, unique=True, primary_key=True)
     account = models.ForeignKey(Account, on_delete=models.CASCADE, to_field='uaid')
+    form = models.ForeignKey(Form, on_delete=models.CASCADE, to_field='ufid', blank=True, null=True)
+    landing_page = models.ForeignKey(LandingPage, on_delete=models.CASCADE, to_field='ulid', blank=True, null=True)
     created_by = models.ForeignKey(settings.AUTH_USER_MODEL, to_field='uuid', related_name='created_by',
                                    on_delete=models.CASCADE, blank=True, null=True)
     source = models.CharField(max_length=255, blank=True, null=True)
