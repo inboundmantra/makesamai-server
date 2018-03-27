@@ -18,6 +18,19 @@ REST API backend for MakeSamai.
 - :white_large_square: Email
 - :white_large_square: Tracking
 
+## Environment Variables
+- AWS_ACCESS_KEY_ID
+- AWS_SECRET_ACCESS_KEY
+- S3_BUCKET_NAME
+- S3_REGION_NAME
+- DATABASE_URL
+- SECRET_KEY
+- EMAIL_HOST
+- EMAIL_HOST_USER
+- EMAIL_HOST_PASSWORD
+- EMAIL_PORT
+- DEBUG
+
 ## Deployment CheckList
 
 - :white_large_square: Debug False
