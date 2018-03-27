@@ -14,9 +14,9 @@ REST API backend for MakeSamai.
 - :heavy_check_mark: Contact
 - :heavy_check_mark: Forms
 - :heavy_check_mark: Landing Pages
-- :white_large_square: Tracking
-- :white_large_square: List
+- :heavy_check_mark: List
 - :white_large_square: Email
+- :white_large_square: Tracking
 
 ## Deployment CheckList
 
@@ -177,7 +177,25 @@ Authentication Required - *False*
 
 Method Allowed - *GET*
 
+### Lists
+#### List/Create
+
+```/api/list/list/account/<account_id>/```
+
+Authentication Required - *True*
+
+Method Allowed - *GET, POST*
+
+#### Retrieve/Update/Destroy
+
+```/api/list/retrieve/<list_id>/account/<account_id>/```
+
+Authentication Required - *True*
+
+Method Allowed - *GET, PUT, PATCH, DELETE*
+
 ### Emails
+### Trakcing
 
 ## Credits
 Created by [Vaibhav Sharma](https://github.com/v4iv/) for [Inbound Mantra](https://www.inboundmantra.com/).
