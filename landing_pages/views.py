@@ -42,6 +42,7 @@ class LandingPageRetrieve(MultipleFieldLookupMixin, generics.RetrieveUpdateDestr
 
 
 class LandingPageRender(MultipleFieldLookupMixin, generics.RetrieveAPIView):
+    queryset = models.LandingPage.objects.all()
     serializer_class = serializers.LandingPageSerializer
     permission_classes = (AllowAny,)
     lookup_fields = ('ulid', 'account')
