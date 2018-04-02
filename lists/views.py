@@ -37,4 +37,4 @@ class ListList(generics.ListCreateAPIView):
 class ListRetrieve(MultipleFieldLookupMixin, generics.RetrieveUpdateDestroyAPIView):
     queryset = models.List.objects.all()
     serializer_class = serializers.ListSerializer
-    lookup_fields = ('list', 'account')
+    lookup_fields = ('ugid', 'account')

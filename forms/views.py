@@ -38,11 +38,11 @@ class FormList(generics.ListCreateAPIView):
 class FormRetrieve(MultipleFieldLookupMixin, generics.RetrieveUpdateDestroyAPIView):
     queryset = models.Form.objects.all()
     serializer_class = serializers.DashboardFormSerializer
-    lookup_fields = ('form', 'account')
+    lookup_fields = ('ufid', 'account')
 
 
 class FormRender(MultipleFieldLookupMixin, generics.RetrieveAPIView):
     queryset = models.Form.objects.all()
     serializer_class = serializers.FormSerializer
     permission_classes = (AllowAny,)
-    lookup_fields = ('form', 'account')
+    lookup_fields = ('ufid', 'account')
