@@ -1,10 +1,29 @@
 from django.core.mail import send_mail
+from django.shortcuts import get_object_or_404
 from rest_framework import generics, permissions, status
 from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from . import models, serializers
+
+
+class MultipleFieldLookupMixin(object):
+    """
+    Apply this mixin to any view or viewset to get multiple field filtering
+    based on a `lookup_fields` attribute, instead of the default single field filtering.
+    """
+
+    def get_object(self):
+        queryset = self.get_queryset()  # Get the base queryset
+        queryset = self.filter_queryset(queryset)  # Apply any filter backends
+        filter = {}
+        for field in self.lookup_fields:
+            if self.kwargs[field]:  # Ignore empty fields.
+                filter[field] = self.kwargs[field]
+        obj = get_object_or_404(queryset, **filter)  # Lookup the object
+        self.check_object_permissions(self.request, obj)
+        return obj
 
 
 class ContactList(generics.ListCreateAPIView):
@@ -17,12 +36,6 @@ class ContactList(generics.ListCreateAPIView):
         """
         uaid = self.kwargs['account']
         return models.Contact.objects.filter(account=uaid).order_by('-created_on')
-
-
-# class ContactCreate(generics.CreateAPIView):
-#     queryset = models.Contact.objects.all()
-#     serializer_class = serializers.ContactSerializer
-#     permission_classes = (AllowAny,)
 
 
 class ContactCreate(APIView):
@@ -54,19 +67,13 @@ class AddressCreate(generics.CreateAPIView):
     permission_classes = (AllowAny,)
 
 
-class ContactRetrieve(generics.RetrieveUpdateDestroyAPIView):
+class ContactRetrieve(MultipleFieldLookupMixin, generics.RetrieveUpdateDestroyAPIView):
+    queryset = models.Contact.objects.all()
     serializer_class = serializers.ContactSerializer
-    lookup_field = 'ucid'
-
-    def get_queryset(self):
-        """
-        This view should return a list of all the contact for
-        the user as determined by the account portion of the URL.
-        """
-        uaid = self.kwargs['account']
-        return models.Contact.objects.filter(account=uaid)
+    lookup_fields = ('ucid', 'account')
 
 
 class AddressRetrieve(generics.RetrieveUpdateDestroyAPIView):
+    queryset = models.Address.objects.all()
     serializer_class = serializers.AddressSerializer
     lookup_field = 'address'
