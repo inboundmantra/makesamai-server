@@ -18,6 +18,7 @@ class LandingPageList(generics.ListCreateAPIView):
 
 class LandingPageRetrieve(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = serializers.LandingPageSerializer
+    lookup_url_kwarg = 'ulid'
 
     def get_queryset(self):
         uaid = self.kwargs['account']
@@ -28,6 +29,7 @@ class LandingPageRetrieve(generics.RetrieveUpdateDestroyAPIView):
 class LandingPageRender(generics.RetrieveAPIView):
     serializer_class = serializers.LandingPageSerializer
     permission_classes = (AllowAny,)
+    lookup_url_kwarg = 'ulid'
 
     def get_queryset(self):
         uaid = self.kwargs['account']
