@@ -18,20 +18,18 @@ class FormList(generics.ListCreateAPIView):
 
 class FormRetrieve(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = serializers.DashboardFormSerializer
-    lookup_url_kwarg = 'ufid'
+    lookup_field = 'form'
 
     def get_queryset(self):
         uaid = self.kwargs['account']
-        ufid = self.kwargs['form']
-        return models.Form.objects.get(account=uaid, ufid=ufid)
+        return models.Form.objects.get(account=uaid)
 
 
 class FormRender(generics.RetrieveAPIView):
     serializer_class = serializers.FormSerializer
     permission_classes = (AllowAny,)
-    lookup_url_kwarg = 'ufid'
+    lookup_field = 'form'
 
     def get_queryset(self):
         uaid = self.kwargs['account']
-        ufid = self.kwargs['form']
-        return models.Form.objects.get(account=uaid, ufid=ufid)
+        return models.Form.objects.get(account=uaid)

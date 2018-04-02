@@ -18,20 +18,18 @@ class LandingPageList(generics.ListCreateAPIView):
 
 class LandingPageRetrieve(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = serializers.LandingPageSerializer
-    lookup_url_kwarg = 'ulid'
+    lookup_field = 'ulid'
 
     def get_queryset(self):
         uaid = self.kwargs['account']
-        ulid = self.kwargs['ulid']
-        return models.LandingPage.objects.get(account=uaid, ulid=ulid)
+        return models.LandingPage.objects.get(account=uaid)
 
 
 class LandingPageRender(generics.RetrieveAPIView):
     serializer_class = serializers.LandingPageSerializer
     permission_classes = (AllowAny,)
-    lookup_url_kwarg = 'ulid'
+    lookup_field = 'ulid'
 
     def get_queryset(self):
         uaid = self.kwargs['account']
-        ulid = self.kwargs['ulid']
-        return models.LandingPage.objects.get(account=uaid, ulid=ulid)
+        return models.LandingPage.objects.get(account=uaid)

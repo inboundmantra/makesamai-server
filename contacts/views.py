@@ -69,7 +69,4 @@ class ContactRetrieve(generics.RetrieveUpdateDestroyAPIView):
 
 class AddressRetrieve(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = serializers.AddressSerializer
-
-    def get_queryset(self):
-        id = self.kwargs['address']
-        return models.Address.objects.get(id=id)
+    lookup_field = 'address'

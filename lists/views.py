@@ -17,9 +17,8 @@ class ListList(generics.ListCreateAPIView):
 
 class ListRetrieve(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = serializers.ListSerializer
-    lookup_url_kwarg = 'ugid'
+    lookup_field = 'list'
 
     def get_queryset(self):
         uaid = self.kwargs['account']
-        ugid = self.kwargs['list']
-        return models.List.objects.get(account=uaid, ugid=ugid)
+        return models.List.objects.get(account=uaid)
