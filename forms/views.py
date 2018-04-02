@@ -42,6 +42,7 @@ class FormRetrieve(MultipleFieldLookupMixin, generics.RetrieveUpdateDestroyAPIVi
 
 
 class FormRender(MultipleFieldLookupMixin, generics.RetrieveAPIView):
+    queryset = models.Form.objects.all()
     serializer_class = serializers.FormSerializer
     permission_classes = (AllowAny,)
     lookup_fields = ('form', 'account')
