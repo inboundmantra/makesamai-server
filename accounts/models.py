@@ -21,7 +21,7 @@ class Account(models.Model):
         verbose_name_plural = _('accounts')
 
     def get_absolute_url(self):
-        return "/api/account/%s/" % urlquote(self.uid)
+        return "/api/account/%s/" % urlquote(self.uaid)
 
     def __str__(self):
         return self.name
