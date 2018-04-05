@@ -54,6 +54,9 @@ class AccountTest(APITestCase):
         self.assertTrue('domain' in response.data)
 
     def test_create_account_with_no_domain(self):
+        """
+        Ensure we can create a new account without domain data.
+        """
         tok = AccessToken.objects.create(
             user=self.test_user, token='1234567890',
             application=self.application, scope='read write',
@@ -72,6 +75,9 @@ class AccountTest(APITestCase):
         self.assertEqual(response.data['domain'], None)
 
     def test_list_user_accounts(self):
+        """
+        Ensure we can list the accounts of a user.
+        """
         tok = AccessToken.objects.create(
             user=self.test_user, token='1234567890',
             application=self.application, scope='read write',
@@ -84,6 +90,9 @@ class AccountTest(APITestCase):
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
     def test_retrieve_account(self):
+        """
+        Ensure we can retrieve an account.
+        """
         tok = AccessToken.objects.create(
             user=self.test_user, token='1234567890',
             application=self.application, scope='read write',
@@ -96,6 +105,9 @@ class AccountTest(APITestCase):
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
     def test_update_account(self):
+        """
+        Ensure we can update an account.
+        """
         tok = AccessToken.objects.create(
             user=self.test_user, token='1234567890',
             application=self.application, scope='read write',
@@ -113,9 +125,13 @@ class AccountTest(APITestCase):
         }
 
         response = self.client.put(self.retrieve_url, data, format='json', **auth_headers)
+        self.assertEqual(response.data['domain'], data['domain'])
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
     def test_delete_account(self):
+        """
+        Ensure we can delete an account.
+        """
         tok = AccessToken.objects.create(
             user=self.test_user, token='1234567890',
             application=self.application, scope='read write',

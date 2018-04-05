@@ -9,15 +9,9 @@ from . import models, serializers
 
 
 class ContactList(generics.ListCreateAPIView):
+    queryset = models.Contact.objects.all().order_by('-created_on')
     serializer_class = serializers.ContactSerializer
-
-    def get_queryset(self):
-        """
-        This view should return a list of all the contact for
-        the user as determined by the account portion of the URL.
-        """
-        uaid = self.kwargs['account']
-        return models.Contact.objects.filter(account=uaid).order_by('-created_on')
+    lookup_field = 'account'
 
 
 class ContactCreate(APIView):
@@ -43,16 +37,16 @@ class ContactCreate(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
-class AddressCreate(generics.CreateAPIView):
-    queryset = models.Address.objects.all()
-    serializer_class = serializers.AddressSerializer
-    permission_classes = (AllowAny,)
-
-
 class ContactRetrieve(MultipleFieldLookupMixin, generics.RetrieveUpdateDestroyAPIView):
     queryset = models.Contact.objects.all()
     serializer_class = serializers.ContactSerializer
     lookup_fields = ('ucid', 'account')
+
+
+class AddressCreate(generics.CreateAPIView):
+    queryset = models.Address.objects.all()
+    serializer_class = serializers.AddressSerializer
+    permission_classes = (AllowAny,)
 
 
 class AddressRetrieve(generics.RetrieveUpdateDestroyAPIView):

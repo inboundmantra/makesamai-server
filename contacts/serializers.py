@@ -22,6 +22,7 @@ class ContactSerializer(serializers.ModelSerializer):
         model = models.Contact
         fields = (
             'ucid',
+            'account',
             'source',
             'title',
             'first_name',
