@@ -12,7 +12,7 @@ class Account(models.Model):
     uaid = RandomSlugField(length=7, unique=True, primary_key=True)
     owner = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, to_field='uuid')
     name = models.CharField(max_length=100)
-    slug = models.SlugField(unique=True)
+    domain = models.URLField(unique=True, blank=True, null=True)
     created_on = models.DateTimeField(default=timezone.now)
     objects = managers.AccountManager()
 
