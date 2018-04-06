@@ -24,7 +24,6 @@ class UserCreateTest(APITestCase):
         }
 
         response = self.client.post(self.create_url, data, format='json')
-        print(response.data)
         self.assertEqual(models.Client.objects.count(), 2)
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
         self.assertEqual(response.data['email'], data['email'])

@@ -9,9 +9,15 @@ from . import models, serializers
 
 
 class ContactList(generics.ListCreateAPIView):
-    queryset = models.Contact.objects.all().order_by('-created_on')
     serializer_class = serializers.ContactSerializer
-    lookup_field = 'account'
+
+    def get_queryset(self):
+        """
+        This view should return a list of all the Lists for
+        the user as determined by the account portion of the URL.
+        """
+        uaid = self.kwargs['account']
+        return models.Contact.objects.filter(account=uaid).order_by('-created_on')
 
 
 class ContactCreate(APIView):

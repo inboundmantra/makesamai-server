@@ -6,7 +6,7 @@ from . import serializers, models
 
 
 class FormList(generics.ListCreateAPIView):
-    serializer_class = serializers.FormSerializer
+    serializer_class = serializers.DashboardFormSerializer
 
     def get_queryset(self):
         """

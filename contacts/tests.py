@@ -62,7 +62,7 @@ class ContactTest(APITestCase):
         }
 
         response = self.client.post(self.create_url, data, format='json', **auth_headers)
-        self.assertEqual(models.Account.objects.count(), 1)
+        self.assertEqual(models.Contact.objects.count(), 2)
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
         self.assertEqual(response.data['first_name'], data['first_name'])
         self.assertTrue('last_name' in response.data)
