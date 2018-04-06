@@ -7,13 +7,13 @@ from accounts.models import Account
 
 
 class Email(models.Model):
-    umid = RandomSlugField(length=9, unique=True, primary_key=True, editable=False)
-    account = models.ForeignKey(Account, on_delete=models.CASCADE, to_field='uaid', editable=False)
-    to_email = models.EmailField(max_length=200, editable=False)
-    from_email = models.EmailField(max_length=200, default='no-reply@makesamai.com', editable=False)
-    subject = models.CharField(max_length=255, blank=True, null=True, editable=False)
-    message = models.TextField(blank=True, null=True, editable=False)
-    timestamp = models.DateTimeField(auto_now_add=True, editable=False)
+    umid = RandomSlugField(length=9, unique=True, primary_key=True)
+    account = models.ForeignKey(Account, on_delete=models.CASCADE, to_field='uaid')
+    to_email = models.EmailField(max_length=200)
+    from_email = models.EmailField(max_length=200, default='no-reply@makesamai.com')
+    subject = models.CharField(max_length=255, blank=True, null=True)
+    message = models.TextField(blank=True, null=True)
+    timestamp = models.DateTimeField(auto_now_add=True)
     status = models.CharField(max_length=200, default='SENT')
 
     class Meta:
