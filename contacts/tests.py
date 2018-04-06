@@ -43,7 +43,7 @@ class ContactTest(APITestCase):
 
     def test_create_contact(self):
         """
-        Ensure we can create a new contact.
+        Ensure we can create a new Contact.
         """
         tok = AccessToken.objects.create(
             user=self.test_user, token='1234567890',
@@ -69,7 +69,7 @@ class ContactTest(APITestCase):
 
     def test_list_contacts(self):
         """
-        Ensure we can list the accounts of a user.
+        Ensure we can list the Contacts of a user.
         """
         tok = AccessToken.objects.create(
             user=self.test_user, token='1234567890',
@@ -84,7 +84,7 @@ class ContactTest(APITestCase):
 
     def test_retrieve_contact(self):
         """
-        Ensure we can retrieve an contact.
+        Ensure we can retrieve a Contact.
         """
         tok = AccessToken.objects.create(
             user=self.test_user, token='1234567890',
@@ -95,12 +95,11 @@ class ContactTest(APITestCase):
             'HTTP_AUTHORIZATION': 'Bearer ' + tok.token,
         }
         response = self.client.get(self.retrieve_url, format='json', **auth_headers)
-        print(response)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
     def test_update_contact(self):
         """
-        Ensure we can update an contact.
+        Ensure we can update a Contact.
         """
         tok = AccessToken.objects.create(
             user=self.test_user, token='1234567890',
@@ -123,7 +122,7 @@ class ContactTest(APITestCase):
 
     def test_delete_contact(self):
         """
-        Ensure we can delete an contact.
+        Ensure we can delete a Contact.
         """
         tok = AccessToken.objects.create(
             user=self.test_user, token='1234567890',

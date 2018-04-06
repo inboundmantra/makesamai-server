@@ -109,7 +109,6 @@ class LandingPageTest(APITestCase):
             'HTTP_AUTHORIZATION': 'Bearer ' + tok.token,
         }
         response = self.client.get(self.retrieve_url, format='json', **auth_headers)
-        print(response)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
     def test_update_lp(self):

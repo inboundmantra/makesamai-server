@@ -67,7 +67,7 @@ class ListTest(APITestCase):
 
     def test_list_lists(self):
         """
-        Ensure we can list the Lists of an user.
+        Ensure we can list the Lists of a user.
         """
         tok = AccessToken.objects.create(
             user=self.test_user, token='1234567890',
@@ -93,7 +93,6 @@ class ListTest(APITestCase):
             'HTTP_AUTHORIZATION': 'Bearer ' + tok.token,
         }
         response = self.client.get(self.retrieve_url, format='json', **auth_headers)
-        print(response)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
     def test_update_list(self):

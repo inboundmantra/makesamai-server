@@ -29,7 +29,7 @@ class AccountTest(APITestCase):
 
     def test_create_account(self):
         """
-        Ensure we can create a new account.
+        Ensure we can create a new Account.
         """
         tok = AccessToken.objects.create(
             user=self.test_user, token='1234567890',
@@ -55,7 +55,7 @@ class AccountTest(APITestCase):
 
     def test_create_account_with_no_domain(self):
         """
-        Ensure we can create a new account without domain data.
+        Ensure we can create a new Account without domain data.
         """
         tok = AccessToken.objects.create(
             user=self.test_user, token='1234567890',
@@ -76,7 +76,7 @@ class AccountTest(APITestCase):
 
     def test_list_user_accounts(self):
         """
-        Ensure we can list the accounts of a user.
+        Ensure we can list the Accounts of a user.
         """
         tok = AccessToken.objects.create(
             user=self.test_user, token='1234567890',
@@ -91,7 +91,7 @@ class AccountTest(APITestCase):
 
     def test_retrieve_account(self):
         """
-        Ensure we can retrieve an account.
+        Ensure we can retrieve an Account.
         """
         tok = AccessToken.objects.create(
             user=self.test_user, token='1234567890',
@@ -106,7 +106,7 @@ class AccountTest(APITestCase):
 
     def test_update_account(self):
         """
-        Ensure we can update an account.
+        Ensure we can update an Account.
         """
         tok = AccessToken.objects.create(
             user=self.test_user, token='1234567890',
@@ -130,7 +130,7 @@ class AccountTest(APITestCase):
 
     def test_delete_account(self):
         """
-        Ensure we can delete an account.
+        Ensure we can delete an Account.
         """
         tok = AccessToken.objects.create(
             user=self.test_user, token='1234567890',
