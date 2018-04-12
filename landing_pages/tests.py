@@ -49,7 +49,7 @@ class LandingPageTest(APITestCase):
                                     })
         self.render_url = reverse('landing_pages:render',
                                   kwargs={
-                                      'ulid': self.test_lp.ulid,
+                                      'slug': self.test_lp.slug,
                                       'account': self.test_account.uaid,
                                   })
 

@@ -13,10 +13,15 @@ class UserAccountList(generics.ListCreateAPIView):
     serializer_class = serializers.AccountSerializer
     user = None
 
+    def perform_create(self, serializer):
+        if self.request and hasattr(self.request, "user"):
+            self.user = self.request.user
+        serializer.save(owner=self.user)
+
     def get_queryset(self):
         """
         This view should return a list of all the accounts for
-        the user as determined by the user portion of the URL.
+        the user as determined by the access token.
         """
         if self.request and hasattr(self.request, "user"):
             self.user = self.request.user

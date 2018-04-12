@@ -19,7 +19,7 @@ class CreateClient(APIView):
             user = serializer.save()
             send_mail(
                 "Welcome To Make Samai!",
-                "Hi " + user.first_name + ",\n We are glad to have you onboard Make Samai. Get Started With Superpowered Marketing Today.",
+                "Hi " + user.first_name + ",\n We are glad to have you onboard MakeSamai. Get Started With Superpowered Marketing Today.",
                 'notification-noreply@makesamai.com',
                 [user.email],
                 fail_silently=True,

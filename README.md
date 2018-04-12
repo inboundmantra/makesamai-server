@@ -184,7 +184,7 @@ Method Allowed - *GET, PUT, PATCH, DELETE*
 
 #### Render
 
-```/api/landing_page/render/<landing_page_id>/account/<account_id>/```
+```/api/landing_page/render/<landing_page_slug>/account/<account_id>/```
 
 Authentication Required - *False*
 
