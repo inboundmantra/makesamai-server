@@ -29,7 +29,7 @@ class ContactSerializer(serializers.ModelSerializer):
             'title',
             'first_name',
             'last_name',
-            'email'
+            'email',
             'company',
             'website_url',
             'phone',
