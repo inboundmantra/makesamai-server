@@ -15,6 +15,7 @@ gunicorn==19.7.1
 idna==2.6
 jmespath==0.9.3
 knife==0.5.11
+newrelic==3.2.0.91
 oauthlib==2.0.6
 parse==1.8.2
 Pillow==5.0.0
@@ -24,6 +25,7 @@ pytz==2018.3
 requests==2.18.4
 s3transfer==0.1.13
 six==1.11.0
+stuf==0.9.6
 urllib3==1.22
 virtualenv==15.1.0
 virtualenv-clone==0.3.0

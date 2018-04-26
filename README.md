@@ -37,7 +37,7 @@ REST API backend for MakeSamai.
 - :white_large_square: Production Database
 - :white_large_square: Production SendGrid API
 - :white_large_square: Production Dyno
-- :white_large_square: Metrics Enabled
+- :heavy_check_mark: Metrics Enabled
 
 ## Important Commands
 

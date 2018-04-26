@@ -1,2 +1,2 @@
 release: python manage.py migrate
-web: gunicorn MakeSamai.wsgi
+web: NEW_RELIC_CONFIG_FILE=newrelic.ini newrelic-admin run-program gunicorn MakeSamai.wsgi
