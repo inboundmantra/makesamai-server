@@ -55,7 +55,7 @@ To create a superuser
 
 ## Root URL
 
-http://api.makesamai.com
+https://api.makesamai.com
 
 ## API Endpoints
 Suffix ```?format=json``` on get apis to get JSON format data.

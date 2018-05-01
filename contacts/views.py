@@ -31,12 +31,20 @@ class ContactCreate(APIView):
         if serializer.is_valid():
             contact = serializer.save()
             send_mail(
-                "Welcome To Make Samai!",
-                "Hi " + contact.first_name + ",\n We are glad to have you onboard Make Samai. Get Started With Superpowered Marketing Today.",
+                "Thank You For Submitting Your Details",
+                "Hi " + contact.first_name + ",\n Thank You For Submitting Your Details.",
                 'notification-noreply@makesamai.com',
                 [contact.email],
                 fail_silently=True,
-                html_message="Hi " + contact.first_name + ",<br><br> Welcome to <strong>MakeSamai</strong>! We're so excited that you made some samai to sign up with us. <br><br>See what we did there? ;). <br><br>Get Started With Superpowered Marketing <a href='http://www.makesamai.com/help'>here</a>. <br><br>We look forward to working with you to superpower your marketing efforts. Feel free to reach out to us at <a href='mailto:support@makesamai.com'>support@makesamai.com</a><br><br><br><br>Love,<br>Team MakeSamai",
+                html_message="Hi " + contact.first_name + ",<br><br> Thank you for filling " + contact.form.title + " on " + contact.landing_page.title + " ! <br><br><br><br>From,<br>" + contact.account.name,
+            )
+            send_mail(
+                "New Contact Created: " + contact.first_name + " " + contact.last_name,
+                "Hi ,\n New Contact Was Created \nName: " + contact.first_name + " " + contact.last_name,
+                'notification-noreply@makesamai.com',
+                [contact.account.owner.email],
+                fail_silently=True,
+                html_message="Hi " + contact.account.owner.first_name + ",<br><br> New Contact was created from " + contact.form.title + " on " + contact.landing_page.title + " !<br> Name: " + contact.first_name + " " + contact.last_name + " <br><br><br><br>From,<br>Team MakeSamai",
             )
             if contact:
                 return Response(serializer.data, status=status.HTTP_201_CREATED)
