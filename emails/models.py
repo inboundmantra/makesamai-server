@@ -33,3 +33,20 @@ class Email(models.Model):
 
     def __str__(self):
         return self.subject
+
+
+class EmailCampaign(models.Model):
+    cmid = RandomSlugField(length=9, unique=True, primary_key=True)
+    account = models.ForeignKey(Account, on_delete=models.CASCADE, to_field='uaid')
+    list = models.TextField(blank=True, null=True)
+    campaign_title = models.CharField(max_length=255, blank=True, null=True)
+    subject = models.CharField(max_length=255, blank=True, null=True)
+    message_template = models.TextField(blank=True, null=True)
+    timestamp = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        verbose_name = _('Campaign')
+        verbose_name_plural = _('Campaigns')
+
+    def __str__(self):
+        return self.campaign_title
