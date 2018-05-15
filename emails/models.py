@@ -4,6 +4,7 @@ from randomslugfield import RandomSlugField
 from django.utils.translation import ugettext_lazy as _
 
 from accounts.models import Account
+from lists.models import List
 
 
 class Email(models.Model):
@@ -38,7 +39,7 @@ class Email(models.Model):
 class EmailCampaign(models.Model):
     cmid = RandomSlugField(length=9, unique=True, primary_key=True)
     account = models.ForeignKey(Account, on_delete=models.CASCADE, to_field='uaid')
-    list = models.TextField(blank=True, null=True)
+    list = models.ForeignKey(List, on_delete=models.CASCADE, to_field='ugid', blank=True, null=True)
     campaign_title = models.CharField(max_length=255, blank=True, null=True)
     subject = models.CharField(max_length=255, blank=True, null=True)
     message_template = models.TextField(blank=True, null=True)
@@ -47,6 +48,18 @@ class EmailCampaign(models.Model):
     class Meta:
         verbose_name = _('Campaign')
         verbose_name_plural = _('Campaigns')
+
+    def save(self, *args, **kwargs):
+        # for contact in self.list.assigned_contacts:
+        #     email = EmailMessage(
+        #         self.subject,
+        #         self.message_template,
+        #         'no-reply@makesamai.com',
+        #         [contact.email],
+        #     )
+        #     email.content_subtype = "html"
+        #     email.send(fail_silently=True)
+        super().save(*args, **kwargs)
 
     def __str__(self):
         return self.campaign_title
