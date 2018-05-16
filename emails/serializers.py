@@ -7,7 +7,7 @@ class EmailCampaignSerializer(serializers.ModelSerializer):
         model = models.EmailCampaign
         fields = (
             'cmid',
-            'form',
+            'created_by',
             'account',
             'list',
             'campaign_title',

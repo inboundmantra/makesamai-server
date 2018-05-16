@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.core.mail import EmailMessage
 from django.db import models
 from randomslugfield import RandomSlugField
@@ -38,6 +39,8 @@ class Email(models.Model):
 
 class EmailCampaign(models.Model):
     cmid = RandomSlugField(length=9, unique=True, primary_key=True)
+    created_by = models.ForeignKey(settings.AUTH_USER_MODEL, to_field='uuid', related_name='created_by',
+                                   on_delete=models.CASCADE, blank=True, null=True)
     account = models.ForeignKey(Account, on_delete=models.CASCADE, to_field='uaid')
     list = models.ForeignKey(List, on_delete=models.CASCADE, to_field='ugid', blank=True, null=True)
     campaign_title = models.CharField(max_length=255, blank=True, null=True)
