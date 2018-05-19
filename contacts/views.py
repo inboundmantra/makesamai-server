@@ -30,22 +30,25 @@ class ContactCreate(APIView):
         serializer = serializers.ContactSerializer(data=request.data)
         if serializer.is_valid():
             contact = serializer.save()
-            send_mail(
-                "Thank You For Submitting Your Details",
-                "Hi " + contact.first_name + ",\n Thank You For Submitting Your Details.",
-                'notification-noreply@makesamai.com',
-                [contact.email],
-                fail_silently=True,
-                html_message="Hi " + contact.first_name + ",<br><br> Thank you for filling " + contact.form.title + " on " + contact.landing_page.title + " ! <br><br><br><br>From,<br>" + contact.account.name,
-            )
-            send_mail(
-                "New Contact Created: " + contact.first_name + " " + contact.last_name,
-                "Hi ,\n New Contact Was Created \nName: " + contact.first_name + " " + contact.last_name,
-                'notification-noreply@makesamai.com',
-                [contact.account.owner.email],
-                fail_silently=True,
-                html_message="Hi " + contact.account.owner.first_name + ",<br><br> New Contact was created from " + contact.form.title + " on " + contact.landing_page.title + " !<br> Name: " + contact.first_name + " " + contact.last_name + " <br><br><br><br>From,<br>Team MakeSamai",
-            )
+            try:
+                send_mail(
+                    "Thank You For Submitting Your Details",
+                    "Hi " + contact.first_name + ",\n Thank You For Submitting Your Details.",
+                    'notification-noreply@makesamai.com',
+                    [contact.email],
+                    fail_silently=True,
+                    html_message="Hi " + contact.first_name + ",<br><br> Thank you for filling " + contact.form.title + " on " + contact.landing_page.title + " ! <br><br><br><br>From,<br>" + contact.account.name,
+                )
+                send_mail(
+                    "New Contact Created: " + contact.first_name + " " + contact.last_name,
+                    "Hi ,\n New Contact Was Created \nName: " + contact.first_name + " " + contact.last_name,
+                    'notification-noreply@makesamai.com',
+                    [contact.account.owner.email],
+                    fail_silently=True,
+                    html_message="Hi " + contact.account.owner.first_name + ",<br><br> New Contact was created from " + contact.form.title + " on " + contact.landing_page.title + " !<br> Name: " + contact.first_name + " " + contact.last_name + " <br><br><br><br>From,<br>Team MakeSamai",
+                )
+            finally:
+                pass
             if contact:
                 return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
