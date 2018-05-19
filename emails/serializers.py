@@ -15,3 +15,19 @@ class EmailCampaignSerializer(serializers.ModelSerializer):
             'message_template',
             'timestamp'
         )
+
+
+class EmailSerializer(serializers.ModelSerializer):
+    class Meta:
+        models = models.Email
+        fields = (
+            'umid',
+            'campaign',
+            'account',
+            'to_email',
+            'from_email',
+            'subject',
+            'message',
+            'timestamp',
+            'status'
+        )

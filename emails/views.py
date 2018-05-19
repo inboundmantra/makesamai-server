@@ -21,3 +21,9 @@ class EmailCampaignRetrieve(MultipleFieldLookupMixin, generics.RetrieveAPIView):
     queryset = models.EmailCampaign.objects.all()
     serializer_class = serializers.EmailCampaignSerializer
     lookup_fields = ('cmid', 'account')
+
+
+class EmailListRetrieve(MultipleFieldLookupMixin, generics.ListAPIView):
+    queryset = models.Email.objects.all()
+    serializer_class = serializers.EmailSerializer
+    lookup_fields = ('cmid', 'account')
