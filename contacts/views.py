@@ -6,6 +6,9 @@ from rest_framework.views import APIView
 
 from MakeSamai.mixins import MultipleFieldLookupMixin
 from . import models, serializers
+import logging
+
+logger = logging.getLogger(__name__)
 
 
 class ContactList(generics.ListCreateAPIView):
@@ -47,8 +50,8 @@ class ContactCreate(APIView):
                     fail_silently=True,
                     html_message="Hi " + contact.account.owner.first_name + ",<br><br> New Contact was created from " + contact.form.title + " on " + contact.landing_page.title + " !<br> Name: " + contact.first_name + " " + contact.last_name + " <br><br><br><br>From,<br>Team MakeSamai",
                 )
-            finally:
-                pass
+            except:
+                logger.error('Mail Send Error: ', exc_info=True)
             if contact:
                 return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
