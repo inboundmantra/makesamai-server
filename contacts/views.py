@@ -72,4 +72,4 @@ class AddressCreate(generics.CreateAPIView):
 class AddressRetrieve(generics.RetrieveUpdateDestroyAPIView):
     queryset = models.Address.objects.all()
     serializer_class = serializers.AddressSerializer
-    lookup_field = 'address'
+    lookup_field = 'id'
