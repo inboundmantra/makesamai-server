@@ -8,5 +8,5 @@ urlpatterns = [
     path('api/contact/create/', views.ContactCreate.as_view(), name='contact_create'),
     path('api/contact/retrieve/<slug:ucid>/account/<slug:account>/', views.ContactRetrieve.as_view(), name='contact_rud'),
     path('api/address/create/', views.AddressCreate.as_view(), name='address_create'),
-    path('api/address/<int:address>/', views.AddressRetrieve.as_view(), name='address_rud'),
+    path('api/address/<int:id>/', views.AddressRetrieve.as_view(), name='address_rud'),
 ]
