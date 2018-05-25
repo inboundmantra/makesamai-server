@@ -186,6 +186,11 @@ SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 # Allow all host headers
 ALLOWED_HOSTS = ['*']
 
+# Admin Site Configurations
+ADMIN_SITE_HEADER = "MakeSamai Administration"
+ADMIN_INDEX_TITLE = "Dashboard"
+ADMIN_SITE_TITLE = "MakeSamai Administration"
+
 IGNORABLE_404_URLS = [
     re.compile(r'^/apple-touch-icon.*\.png$'),
     re.compile(r'^/favicon\.ico$'),
