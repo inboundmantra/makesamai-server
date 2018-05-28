@@ -40,9 +40,9 @@ class CreateClient(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
-def confirm_email_view(request, uuid, key):
+def confirm_email_view(request, uuid, confirmation_key):
     user = get_object_or_404(settings.AUTH_USER_MODEL, uuid=uuid)
-    user.confirm_email(key)
+    user.confirm_email(confirmation_key)
     assert isinstance(request, HttpRequest)
     return HttpResponse("Your Email is Confirmed!", content_type='text/plain')
 
