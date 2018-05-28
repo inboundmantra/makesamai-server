@@ -6,11 +6,12 @@ from django.utils import timezone
 from django.utils.http import urlquote
 from django.utils.translation import ugettext_lazy as _
 from randomslugfield import RandomSlugField
+from simple_email_confirmation.models import SimpleEmailConfirmationUserMixin
 
 from . import managers
 
 
-class Client(AbstractBaseUser, PermissionsMixin):
+class Client(SimpleEmailConfirmationUserMixin, AbstractBaseUser, PermissionsMixin):
     """
     A Custom User model with admin-compliant Permissions.
     First Name, Last Name, and Email are required.

@@ -8,7 +8,7 @@ django-cors-headers==2.1.0
 django-heroku==0.3.1
 django-oauth-toolkit==1.0.0
 django-randomslugfield==0.3.0
-django-simple-email-verification==0.1.2
+django-simple-email-confirmation==0.23
 django-storages==1.6.5
 djangorestframework==3.7.7
 docutils==0.14
