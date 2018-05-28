@@ -56,6 +56,7 @@ INSTALLED_APPS = [
     'oauth2_provider',
     'storages',
     'randomslugfield',
+    'simple_email_verification',
 ]
 
 MIDDLEWARE = [
@@ -196,3 +197,7 @@ IGNORABLE_404_URLS = [
     re.compile(r'^/favicon\.ico$'),
     re.compile(r'^/robots\.txt$'),
 ]
+
+SIMPLE_EMAIL_VERIFICATION = {
+    'EMAIL_FROM_ADDRESS': 'no-reply@makesamai.com'
+}
