@@ -1,7 +1,7 @@
 from django.conf import settings
 from django.core.mail import send_mail
 from django.http import HttpRequest, HttpResponse
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import get_object_or_404, render, redirect
 from rest_framework import status, generics, permissions
 from rest_framework.response import Response
 from rest_framework.views import APIView
@@ -44,8 +44,7 @@ class CreateClient(APIView):
 def confirm_email_view(request, uuid, confirmation_key):
     user = get_object_or_404(Client, uuid=uuid)
     user.confirm_email(confirmation_key)
-    assert isinstance(request, HttpRequest)
-    return HttpResponse("Your Email is Confirmed!", content_type='text/plain')
+    return redirect("https://app.makesamai.com/")
 
 
 class UserView(generics.RetrieveUpdateAPIView):
